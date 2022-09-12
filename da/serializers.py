@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Member, Spell
+from .models import Member, Spell, Meeting
 from django.contrib.auth import get_user_model
 import django.contrib.auth.password_validation as validations
 from django.contrib.auth.hashers import make_password
@@ -18,6 +18,12 @@ class SpellSerializer(serializers.ModelSerializer):
         model = Spell
         fields = ('id', 'spell','type','use', 'effect', )
         # fields='__all__'
+
+class MeetingSerializer(serializers.ModelSerializer):
+  
+    class Meta:
+        model = Meeting
+        fields = ('date', 'subject' )
 
 class UserSerializer(serializers.ModelSerializer):
 

@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from rest_framework.views import APIView
-from da.serializers import MemberSerializer, SpellSerializer
+from da.serializers import MemberSerializer, SpellSerializer, MeetingSerializer
 # from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Member, Spell
+from .models import Member, Spell, Meeting
 from django.http import JsonResponse
 from rest_framework import generics
 from rest_framework.response import Response
@@ -15,7 +15,7 @@ User = get_user_model()
 # Create your views here.
 
 # # code below is original - don't change or remove 
-# *---- Serializers for Members and Spells models ----*
+# *---- Views for Members and Spells models ----*
 class MemberList(generics.ListCreateAPIView):
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
@@ -31,6 +31,16 @@ class SpellList(generics.ListCreateAPIView):
 class SpellDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Spell.objects.all()
     serializer_class = SpellSerializer
+
+class MeetingList(generics.ListCreateAPIView):
+    queryset = Meeting.objects.all()
+    serializer_class = MeetingSerializer
+    
+# class MeetingDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Spell.objects.all()
+#     serializer_class = SpellSerializer
+
+    
 
 # *---- Serializers for JWT Token Auth ----*
 class RegisterView(APIView):

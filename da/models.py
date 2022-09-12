@@ -34,6 +34,12 @@ class Spell(models.Model):
         return reverse('detail', kwargs={'spell_id': self.id})
 
 
+class Meeting(models.Model):
+    date = models.DateField()
+    subject = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"New meeting about: {self.subject} on {self.date}"
 
 
 

@@ -29,6 +29,7 @@ urlpatterns = [
     path('members/', views.MemberList.as_view(), name='member_list'),
     path('members/<int:pk>/', views.MemberDetail.as_view(), name='member_detail'),
     path('spells/', views.SpellList.as_view(), name='spell_list'),
+    path('meetings/', views.MeetingList.as_view(), name='meeting_list'),
     path('spells/<int:pk>/', views.SpellDetail.as_view(), name='spell_detail'),
     path('register/', views.RegisterView.as_view(), name = 'register'),
     path('login/', views.LoginView.as_view(), name = 'login')
